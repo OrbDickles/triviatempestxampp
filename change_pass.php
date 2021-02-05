@@ -12,7 +12,7 @@
 		$sql = "UPDATE teacher SET Password='".$Password."' WHERE Number='".$Number."'";
 		
 		if($con->query($sql)==TRUE){
-			echo "New student added successfully";
+			echo "Password Changed Successfully";
 		}
 		else{
 			echo "Error: ".$sql."<br>".$con->error;
