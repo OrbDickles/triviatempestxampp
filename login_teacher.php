@@ -1,6 +1,6 @@
 <?php 
 	include("db.php");
-
+	session_start();
 	if (isset($_POST["Number"]) && !empty($_POST["Number"]) && 
 		isset($_POST["password"]) && !empty($_POST["password"])){
 
@@ -16,8 +16,10 @@
 		$st->execute(array($Number, $Password));//encrypt password here
 		$all=$st->fetchAll();
 		if (count($all) == 1){
-			echo "SERVER: Number".$all[0]["Number"];
-			//echo "SERVER: ID#".$all[0]["id"]." - ".$all[0]["Number"];
+			//echo "SERVER: Number".$all[0]["Number"];
+			$_SESSION["teacher_id"] = $Number; //now store $Number in a session variable
+			
+			echo "test".$_SESSION["teacher_id"];
 			exit();
 		}
 

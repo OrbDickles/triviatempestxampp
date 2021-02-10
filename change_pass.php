@@ -1,18 +1,24 @@
 <?php 
+	session_start();
 	include("db.php");
+	//include("login_teacher.php");
+	//$teach_id = $_SESSION["teacher_id"];
 
-	if (isset($_POST["Number"]) && !empty($_POST["Number"]) &&
-		isset($_POST["Password"]) && !empty($_POST["Password"])){
+	if (isset($_POST["Password"]) && !empty($_POST["Password"])){
 
-		AddTr($_POST["Number"], $_POST["Password"]);
+		AddTr($_POST["Password"]);
 	}
 
-	function AddTr($Number, $Password){
+	
+	function AddTr($Password){
+		echo "test2".$_SESSION["teacher_id"];
 		GLOBAL $con;
-		$sql = "UPDATE teacher SET Password='".$Password."' WHERE Number='".$Number."'";
+		$teach_id = $_SESSION["teacher_id"];
+		$sql = "UPDATE teacher SET Password='".$Password."' WHERE Number='".$teach_id."'";
 		
 		if($con->query($sql)==TRUE){
 			echo "Password Changed Successfully";
+			
 		}
 		else{
 			echo "Error: ".$sql."<br>".$con->error;
