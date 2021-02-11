@@ -1,23 +1,22 @@
 <?php 
 	include("db.php");
 
-	if (isset($_POST["username"]) && !empty($_POST["username"]) && 
-		isset($_POST["password"]) && !empty($_POST["password"])){
+	if (isset($_POST["Username"]) && !empty($_POST["Username"]) && 
+		isset($_POST["Password"]) && !empty($_POST["Password"])){
 
-		Login($_POST["username"], $_POST["password"]);
+		Login($_POST["Username"], $_POST["Password"]);
 	}
 
 	function Login($username, $password){
 		GLOBAL $con;
 
-		$sql = "SELECT username FROM admin WHERE username=? AND password=?";
+		$sql = "SELECT Username FROM admin WHERE Username=? AND Password=?";
 		$st=$con->prepare($sql);
 
 		$st->execute(array($username, $password));//encrypt password here
 		$all=$st->fetchAll();
 		if (count($all) == 1){
-			echo "SERVER: Username".$all[0]["username"];
-			//echo "SERVER: ID#".$all[0]["id"]." - ".$all[0]["username"];
+			echo "SERVER: Username".$all[0]["Username"];
 			exit();
 		}
 
