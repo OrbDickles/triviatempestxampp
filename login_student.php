@@ -10,16 +10,15 @@
 	function Login($Number, $Password){
 		GLOBAL $con;
 
-		$sql = "SELECT TeacherID FROM teacher WHERE Number=? AND Password=?";
+		$sql = "SELECT StudentID FROM student WHERE Number=? AND Password=?";
 		$st=$con->prepare($sql);
 
 		$st->execute(array($Number, $Password));//encrypt password here
 		$all=$st->fetchAll();
 		if (count($all) == 1){
-			//echo "SERVER: Number".$all[0]["Number"];
-			$_SESSION["teacher_id"] = $Number; //now store $Number in a session variable
+			$_SESSION["student_id"] = $Number; //now store $Number in a session variable
 			
-			echo "test".$_SESSION["teacher_id"];
+			echo "test".$_SESSION["student_id"];
 			exit();
 		}
 

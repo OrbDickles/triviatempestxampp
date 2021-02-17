@@ -13,7 +13,7 @@
 		$sql = "SELECT meaning as def FROM oedict WHERE word=?";
 		$st=$con->prepare($sql);
 
-		$st->execute(array($word));//encrypt password here
+		$st->execute(array($word));
 		$all=$st->fetch(PDO::FETCH_ASSOC);
 		
 		try
