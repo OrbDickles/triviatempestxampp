@@ -14,7 +14,7 @@
 		echo "test2".$_SESSION["teacher_id"];
 		GLOBAL $con;
 		$teach_id = $_SESSION["teacher_id"];
-		$sql = "UPDATE teacher SET Password='".$Password."' WHERE Number='".$teach_id."'";
+		$sql = "UPDATE teacher SET Password='".$Password."' WHERE TeacherID='".$teach_id."'";
 		
 		if($con->query($sql)==TRUE){
 			echo "Password Changed Successfully";

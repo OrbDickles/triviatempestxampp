@@ -17,7 +17,7 @@
 		$all=$st->fetchAll();
 		if (count($all) == 1){
 			//echo "SERVER: Number".$all[0]["Number"];
-			$_SESSION["teacher_id"] = $Number; //now store $Number in a session variable
+			$_SESSION["teacher_id"] = $all[0]["TeacherID"]; //now store $Number in a session variable
 			
 			echo "test".$_SESSION["teacher_id"];
 			exit();
