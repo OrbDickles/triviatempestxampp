@@ -1,7 +1,6 @@
 <?php 
-
 	include_once("db.php");
-
+	session_start();
 	if (isset($_POST["RoomID"]) && !empty($_POST["RoomID"])){
 
 		SearchRoom($_POST["RoomID"]);

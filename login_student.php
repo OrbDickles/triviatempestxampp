@@ -16,9 +16,9 @@
 		$st->execute(array($Number, $Password));//encrypt password here
 		$all=$st->fetchAll();
 		if (count($all) == 1){
-			$_SESSION["student_id"] = $Number; //now store $Number in a session variable
+			$_SESSION["student_id"] = $all[0]["StudentID"]; //now store $Number in a session variable
 			
-			echo "test".$_SESSION["student_id"];
+			echo "test".$_SESSION["StudentID"];
 			exit();
 		}
 

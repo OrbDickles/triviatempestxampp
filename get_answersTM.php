@@ -1,24 +1,27 @@
 <?php 
 	include("db.php");
 	//session_start();
-    GetAnswer();
-    
-	function GetAnswer(){
-        GLOBAL $con;
+    if (isset($_POST["SC"]) && !empty($_POST["SC"])){
 
-        $sql = "SELECT Answer FROM questions WHERE RoomID=?";
+		GetAnswer($_POST["SC"]);
+	}
+    
+	function GetAnswer($SessionCode){
+        GLOBAL $con;
+        
+        $sql = "SELECT * FROM questions WHERE RoomID=?";
         $st=$con->prepare($sql);
 
-        $st->execute();
+        $st->execute(array($SessionCode));
         $all=$st->fetch(PDO::FETCH_ASSOC);
 
         try
         {
             if(is_countable($all))
             {
-                if (count($all) == 1){
+                if (count($all) >= 1){
 
-                    echo $all['Answer'];
+                    echo $all['Answer']."|".$all['Description'];
                     exit();
                 }
             }
