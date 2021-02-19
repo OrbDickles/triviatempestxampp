@@ -21,9 +21,6 @@
 			if(is_countable($all))
 			{
 				if (count($all) == 1){
-                    // $_SESSION["StudentID"] = $RoomID; //now store $Number in a session variable
-			        // echo "test".$_SESSION["StudentID"];
-			        // exit();
 
 					echo $all['RoomID'];
 					exit();

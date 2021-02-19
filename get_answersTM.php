@@ -13,21 +13,37 @@
         $st=$con->prepare($sql);
 
         $st->execute(array($SessionCode));
-        $all=$st->fetch(PDO::FETCH_ASSOC);
+        $count = $st->rowCount();
+        $counter = 0;
+        //$all=$st->fetch(PDO::FETCH_ASSOC);
 
         try
         {
-            if(is_countable($all))
-            {
-                if (count($all) >= 1){
+            while ($all = $st->fetch(PDO::FETCH_ASSOC)) {
+                //print_r($user); .count($all)
+                
 
+                if (++$counter == $count) {
                     echo $all['Answer']."|".$all['Description'];
-                    exit();
+                } else {
+                    echo $all['Answer']."|".$all['Description']."#";
                 }
             }
-            else{
-                echo "Word Not Found";
-            }
+            //echo $count;
+            // if(is_countable($all))
+            // {
+            //     // while()
+            //     // {
+            //     //     if (count($all) >= 1){
+
+            //     //         echo $all['Answer']."|".$all['Description']."|".count($all);
+            //     //         //exit();
+            //     //     }
+            //     // }   
+            // }
+            // else{
+            //     echo "Word Not Found";
+            // }
         }
         catch(Throwable $e){
             echo "Word Not Found";
